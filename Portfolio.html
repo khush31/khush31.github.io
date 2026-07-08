@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Case study — Khushboo Kumari</title>
+<title>Khushboo Kumari — Product Designer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
@@ -19,7 +19,15 @@
     --nav-bg: rgba(15,15,18,0.72);
     --nav-border: rgba(255,255,255,0.08);
     --nav-active: rgba(255,255,255,0.08);
+    --eyebrow-border: rgba(255,255,255,0.1);
+    --btn-ghost-border: rgba(255,255,255,0.18);
     --dot: rgba(255,255,255,0.06);
+    --pink: #ff2e63;
+    --pink-2: #b5179e;
+    --purple: #8b5cf6;
+    --yellow: #ffb13c;
+    --green: #4ade80;
+    --blue: #60a5fa;
   }
   [data-theme="light"] {
     --bg: #f4f4f2;
@@ -32,28 +40,58 @@
     --nav-bg: rgba(255,255,255,0.78);
     --nav-border: rgba(0,0,0,0.08);
     --nav-active: rgba(0,0,0,0.06);
+    --eyebrow-border: rgba(0,0,0,0.12);
+    --btn-ghost-border: rgba(0,0,0,0.18);
     --dot: rgba(0,0,0,0.05);
+    --green: #16a34a;
   }
   * { box-sizing: border-box; }
   html, body { margin: 0; padding: 0; background-color: var(--bg); color: var(--fg); font-family: "Geist", system-ui, sans-serif; -webkit-font-smoothing: antialiased; transition: color 0.4s ease; }
   body {
     background-image: radial-gradient(var(--dot) 1px, transparent 1px);
     background-size: 28px 28px;
+    background-position: 0 0;
   }
-  ::selection { background: #ff2e63; color: #fff; }
+  ::selection { background: var(--pink); color: #fff; }
   a { color: inherit; text-decoration: none; }
-  .display { font-family: "Anton", "Archivo Black", sans-serif; font-weight: 400; letter-spacing: -0.01em; line-height: 0.92; }
+  button { font-family: inherit; }
+  .display { font-family: "Anton", "Archivo Black", sans-serif; font-weight: 400; letter-spacing: -0.01em; line-height: 0.92; text-transform: none; }
   .mono { font-family: "Geist Mono", ui-monospace, monospace; }
+  #root { min-height: 100vh; }
   body { overflow-x: hidden; }
 
   /* -------------------- RESPONSIVE -------------------- */
+  @media (max-width: 900px) {
+    .company-row { grid-template-columns: 1.4fr 1fr !important; row-gap: 6px !important; }
+    .company-note { display: none !important; }
+  }
   @media (max-width: 720px) {
-    .site-nav { gap: 2px !important; padding: 8px 6px 8px 12px !important; max-width: calc(100vw - 24px) !important; }
+    .site-nav { gap: 2px !important; padding: 8px 6px 8px 12px !important; }
+    .nav-link { padding: 8px 10px !important; font-size: 13px !important; }
     .logo-text { display: none !important; }
-    .nav-back-label { display: none !important; }
-    .nav-project-name { font-size: 13px !important; padding: 8px 10px !important; max-width: 40vw; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 
     section { padding-left: 20px !important; padding-right: 20px !important; }
+    #home { padding-top: 120px !important; padding-bottom: 60px !important; }
+    #work, #companies, #contact { padding-top: 80px !important; padding-bottom: 50px !important; }
+
+    .floating-badge { display: none !important; }
+
+    .project-card { padding: 32px 24px 0 !important; min-height: 0 !important; }
+    .project-mock-area { display: none !important; }
+    .project-title { font-size: clamp(36px, 12vw, 64px) !important; }
+    .project-desc { font-size: 16px !important; }
+    .view-pill { position: static !important; margin: 24px 0 32px !important; width: fit-content; }
+
+    .company-row { grid-template-columns: 1fr !important; gap: 4px !important; padding: 20px 4px !important; }
+    .company-period { text-align: left !important; }
+
+    .logo-strip { gap: 28px !important; justify-content: flex-start !important; }
+
+    .contact-card { padding: 48px 24px !important; }
+    .contact-socials { gap: 24px !important; }
+  }
+  @media (max-width: 420px) {
+    .nav-link { padding: 8px 8px !important; font-size: 12px !important; }
   }
 </style>
 </head>
@@ -65,6 +103,6 @@
 <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
 
-<script type="text/babel" src="casestudy.jsx"></script>
+<script type="text/babel" src="app.jsx"></script>
 </body>
 </html>

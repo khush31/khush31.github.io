@@ -190,13 +190,13 @@ function TopNav({ project, theme, toggleTheme }) {
         border: "1px solid var(--nav-border)",
         borderRadius: 999,
         boxShadow: "0 8px 30px rgba(0,0,0,0.18)",
-      }}>
+      }} className="site-nav">
         <a href="Portfolio.html" style={{ display: "flex", alignItems: "center", gap: 10, padding: "4px 12px 4px 4px", marginRight: 6 }}>
           <Logo />
-          <span style={{ fontWeight: 600, fontSize: 16, letterSpacing: "-0.01em", color: "var(--fg)" }}>Khushboo</span>
+          <span className="logo-text" style={{ fontWeight: 600, fontSize: 16, letterSpacing: "-0.01em", color: "var(--fg)" }}>Khushboo</span>
         </a>
-        <a href="Portfolio.html#work" style={{ padding: "8px 14px", borderRadius: 999, fontSize: 14, color: "var(--muted)" }}>← all work</a>
-        <span style={{ padding: "8px 14px", borderRadius: 999, fontSize: 14, fontWeight: 600, color: "var(--fg)", background: "var(--nav-active)" }}>{project.name}</span>
+        <a href="Portfolio.html#work" className="nav-back-label" style={{ padding: "8px 14px", borderRadius: 999, fontSize: 14, color: "var(--muted)", whiteSpace: "nowrap" }}>← all work</a>
+        <span className="nav-project-name" style={{ padding: "8px 14px", borderRadius: 999, fontSize: 14, fontWeight: 600, color: "var(--fg)", background: "var(--nav-active)" }}>{project.name}</span>
         <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
       </nav>
     </div>

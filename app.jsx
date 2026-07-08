@@ -91,24 +91,27 @@ function TopNav({ active, theme, toggleTheme }) {
         WebkitBackdropFilter: "blur(18px)",
         border: "1px solid var(--nav-border)",
         borderRadius: 999,
-        boxShadow: "0 8px 30px rgba(0,0,0,0.18)"
-      }}>
+        boxShadow: "0 8px 30px rgba(0,0,0,0.18)",
+        maxWidth: "calc(100vw - 24px)"
+      }} className="site-nav">
         <a href="#home" onClick={(e) => {e.preventDefault();scrollToId("home");}}
         style={{ display: "flex", alignItems: "center", gap: 10, padding: "4px 12px 4px 4px", marginRight: 6 }}>
           <Logo />
-          <span style={{ fontWeight: 600, fontSize: 16, letterSpacing: "-0.01em", color: "var(--fg)" }}>Khushboo</span>
+          <span className="logo-text" style={{ fontWeight: 600, fontSize: 16, letterSpacing: "-0.01em", color: "var(--fg)" }}>Khushboo</span>
         </a>
         {NAV.map((n) => {
           const on = active === n.id;
           return (
             <a key={n.id} href={`#${n.id}`}
+            className="nav-link"
             onClick={(e) => {e.preventDefault();scrollToId(n.id);}}
             style={{
               padding: "8px 14px", borderRadius: 999,
               fontSize: 14, fontWeight: on ? 600 : 500,
               color: on ? "var(--fg)" : "var(--muted)",
               background: on ? "var(--nav-active)" : "transparent",
-              transition: "all 0.2s ease"
+              transition: "all 0.2s ease",
+              whiteSpace: "nowrap"
             }}>{n.label}</a>);
 
         })}
@@ -261,7 +264,7 @@ function PerfectChip({ children }) {
 
 function FloatingBadge({ text, color, textColor = "#fff", style, rotate = 0 }) {
   return (
-    <span style={{
+    <span className="floating-badge" style={{
       position: "absolute", zIndex: 2,
       padding: "6px 16px",
       borderRadius: 999,
@@ -336,7 +339,7 @@ function ProjectCard({ project, index }) {
         cursor: "pointer",
         color: "inherit",
         textDecoration: "none"
-      }}>
+      }} className="project-card">
       
       {/* Animated shine sweep */}
       <div aria-hidden style={{
@@ -355,7 +358,7 @@ function ProjectCard({ project, index }) {
       </div>
 
       {/* Title */}
-      <h3 className="display" style={{
+      <h3 className="display project-title" style={{
         fontSize: "clamp(48px, 7vw, 88px)", margin: "16px 0 18px", color: "#fff",
         transform: hover ? "translateX(6px)" : "translateX(0)",
         transition: "transform 0.5s cubic-bezier(.2,.8,.2,1)",
@@ -363,7 +366,7 @@ function ProjectCard({ project, index }) {
       }}>{project.name}</h3>
 
       {/* Description */}
-      <p style={{
+      <p className="project-desc" style={{
         maxWidth: 620, color: "rgba(255,255,255,0.92)",
         fontSize: 19, lineHeight: 1.45, margin: "0 0 22px",
         position: "relative", zIndex: 2
@@ -384,12 +387,12 @@ function ProjectCard({ project, index }) {
       </div>
 
       {/* Mockup area */}
-      <div style={{ position: "relative", marginTop: 28, height: 280, overflow: "visible", zIndex: 2 }}>
+      <div className="project-mock-area" style={{ position: "relative", marginTop: 28, height: 280, overflow: "visible", zIndex: 2 }}>
         <ProjectMock kind={project.mock} hover={hover} />
       </div>
 
       {/* View pill */}
-      <div style={{
+      <div className="view-pill" style={{
         position: "absolute", right: 24, bottom: 24, zIndex: 3,
         padding: hover ? "14px 26px" : "12px 22px",
         borderRadius: 999,
@@ -716,6 +719,7 @@ function Companies() {
         <div key={c.name}
         onMouseEnter={() => setHovered(i)}
         onMouseLeave={() => setHovered(null)}
+        className="company-row"
         style={{
           display: "grid",
           gridTemplateColumns: "1.2fr 2fr 1.2fr auto",
@@ -734,7 +738,7 @@ function Companies() {
           }}>{c.name}</div>
             <div style={{ color: hovered === i ? "var(--fg)" : "var(--muted)", fontSize: 17, transition: "color 0.3s" }}>{c.role}</div>
             <div className="mono" style={{ color: "var(--muted)", fontSize: 13 }}>{c.period}</div>
-            <div style={{ color: "var(--muted)", fontSize: 13, textAlign: "right" }}>{c.note}</div>
+            <div className="company-note" style={{ color: "var(--muted)", fontSize: 13, textAlign: "right" }}>{c.note}</div>
             <div style={{
             position: "absolute", left: 0, top: 0, bottom: 0, width: 3,
             background: "linear-gradient(180deg, var(--pink), var(--pink-2))",
@@ -747,7 +751,7 @@ function Companies() {
       </div>
 
       {/* Logo strip */}
-      <div style={{ marginTop: 80, padding: "28px 0", borderTop: "1px solid var(--line)", borderBottom: "1px solid var(--line)",
+      <div className="logo-strip" style={{ marginTop: 80, padding: "28px 0", borderTop: "1px solid var(--line)", borderBottom: "1px solid var(--line)",
         display: "flex", gap: 64, alignItems: "center", justifyContent: "space-between", flexWrap: "wrap" }}>
         {["QuadLabs", "ANTS Digital", "C-Tel", "Visionary-art", "PROPERTYYY", "Vardhan"].map((l) =>
         <span key={l} className="display" style={{ fontSize: 28, color: "var(--faint)", letterSpacing: "0.02em" }}>{l}</span>
@@ -776,7 +780,7 @@ function Contact() {
         background: "linear-gradient(135deg, #FF2E63 0%, #B5179E 100%)",
         overflow: "hidden",
         boxShadow: "0 30px 80px rgba(255,46,99,0.35)"
-      }}>
+      }} className="contact-card">
         {/* deco */}
         <div aria-hidden style={{
           position: "absolute", inset: 0, backgroundImage: "radial-gradient(rgba(255,255,255,0.15) 1px, transparent 1px)",
@@ -810,7 +814,7 @@ function Contact() {
           }}>Book a 20-min intro <span>→</span></a>
         </div>
 
-        <div style={{ marginTop: 56, display: "flex", gap: 36, flexWrap: "wrap", color: "rgba(255,255,255,0.85)" }}>
+        <div style={{ marginTop: 56, display: "flex", gap: 36, flexWrap: "wrap", color: "rgba(255,255,255,0.85)" }} className="contact-socials">
           {[
           { l: "Email", v: "khushboo31k@gmail.com" },
           { l: "Portfolio", v: "khush31.github.io" },
